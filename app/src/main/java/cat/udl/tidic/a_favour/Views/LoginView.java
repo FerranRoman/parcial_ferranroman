@@ -27,12 +27,17 @@ public class LoginView extends AppCompatActivity {
     private Button registerBtn;
     private Button loginBtn;
     private TextView title;
-    private SharedPreferences preferences;
+    private SharedPreferences mPreferences;
     private LoginViewModel loginViewModel;
 
     //TODO: L'APP conté 2 errors que has de buscar i corregir usant els logs
     //TODO: Explica'm com retornaries i guardaries (no cal fer-ho) una instancia de la classe
     // UserModel a les SharedPreferences?
+    //Crearia una preferencia compartida, en aquest cas ja està creada al PreferencesProvider
+    // sPreference = context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+    // llavors utilitzaria SharedPreferences mPreferences, llavors crearia un gson que l'utilitzaria per fer el
+    // json = gson.toJson(myObject); per a passar-li a la preferencia mPreferences creada abans i fer despres el commit
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,7 +52,7 @@ public class LoginView extends AppCompatActivity {
     public void iniComponents()
     {
         loginViewModel = new LoginViewModel();
-        preferences = PreferencesProvider.providePreferences();
+        mPreferences = PreferencesProvider.providePreferences();
 
         userTxt = findViewById(R.id.user_txt);
         pwdTxt = findViewById(R.id.pwd_txt);

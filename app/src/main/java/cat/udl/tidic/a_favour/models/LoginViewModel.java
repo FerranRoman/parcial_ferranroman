@@ -40,7 +40,7 @@ public class LoginViewModel
         String tokenDecoded = username + ":" + password;
         byte[] bytes = tokenDecoded.getBytes(StandardCharsets.UTF_8);
         String tokenAux = Base64.encodeToString(bytes, Base64.DEFAULT);
-        //mPreferences.edit().putString("token", tokenAux).apply();
+        mPreferences.edit().putString("token", tokenAux).apply();
         tokenAux = ("Authentication: " + tokenAux).trim();
         Call<ResponseBody> call = userService.createToken(tokenAux);
         call.enqueue(new Callback<ResponseBody>()
